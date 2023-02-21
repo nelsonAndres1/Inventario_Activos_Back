@@ -196,9 +196,9 @@ class Conta19Controller extends Controller
             /* ->Where("cedtra", "!=",$separada[1]) */
 
 
-            $res = utf8_decode($this->convert_from_latin1_to_utf8_recursively($query->get()));
-            if($res){
-                for ($i=0; $i < count($res); $i++) { 
+            $res = $this->convert_from_latin1_to_utf8_recursively($query->get());
+            if ($res) {
+                for ($i = 0; $i < count($res); $i++) {
                     $res[$i]['detalle'] = utf8_decode($res[$i]['detalle']);
                 }
             }
