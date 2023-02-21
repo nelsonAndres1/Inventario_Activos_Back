@@ -197,8 +197,10 @@ class Conta19Controller extends Controller
 
 
             $res = utf8_decode($this->convert_from_latin1_to_utf8_recursively($query->get()));
-            for ($i=0; $i < count($res); $i++) { 
-                $res[$i]['detalle'] = utf8_decode($res[$i]['detalle']);
+            if($res){
+                for ($i=0; $i < count($res); $i++) { 
+                    $res[$i]['detalle'] = utf8_decode($res[$i]['detalle']);
+                }
             }
         } else {
             $query = '';
