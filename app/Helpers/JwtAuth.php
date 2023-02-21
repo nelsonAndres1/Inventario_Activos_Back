@@ -136,7 +136,7 @@ class JwtAuth{
                 $token = array(
                      'codact'=>$c19->codact,
                      'claact'=>$con_det,
-                     'coddep'=>$c19_detalle,
+                     'coddep'=>utf8_decode($c19_detalle),
                      'nombre'=>$nombre
                 );
 
@@ -186,10 +186,10 @@ class JwtAuth{
                     'docemp'=>$que->docemp,
                     'ciuced'=>$que->ciuced,
                     'coddoc'=>$que->coddoc,
-                    'priape'=>$this->eliminar_acentos($que->priape),
-                    'segape'=>$this->eliminar_acentos($que->segape),
-                    'nomemp'=>$this->eliminar_acentos($que->nomemp),
-                    'segnom'=>$this->eliminar_acentos($que->segnom),
+                    'priape'=>utf8_decode($this->eliminar_acentos($que->priape)),
+                    'segape'=>utf8_decode($this->eliminar_acentos($que->segape)),
+                    'nomemp'=>utf8_decode($this->eliminar_acentos($que->nomemp)),
+                    'segnom'=>utf8_decode($this->eliminar_acentos($que->segnom)),
                     'fecnac'=>$que->fecnac,
                     'codciu'=>$que->codciu,
                     'codsex'=>$que->codsex,
@@ -311,7 +311,7 @@ class JwtAuth{
                         $arrayCodAct = array(
                             'codact' =>$c124->codact,
                             'estado' =>$c124->estado,
-                            'observacion'=>$c124->observacion
+                            'observacion'=>utf8_decode($c124->observacion)
                         );
                         $arrayActivos[] = $arrayCodAct;
                     }
@@ -533,7 +533,7 @@ class JwtAuth{
                             'numero'=>$n,
                             'codact'=>$c10->codact,
                             'coddep'=>$c10->coddep,
-                            'detalle'=>$c10->detalle,
+                            'detalle'=>utf8_decode($c10->detalle),
                             'dependencia'=>$ubi->detalle,
                             'cedtra'=>$c10->cedtra,
                             'codare'=>$c10->codare,
@@ -1004,10 +1004,10 @@ class JwtAuth{
                     'numero'=>$c124->numero,
                     'fecha'=>$c124->fecha,
                     'codact'=>$c124->codact,
-                    'detalle'=>$conta19->detalle,
+                    'detalle'=>utf8_decode($conta19->detalle),
                     'estact'=>$c124->estact,
                     'estinv'=>$c124->estinv,
-                    'observacion'=>$c124->observacion
+                    'observacion'=>utf8_decode($c124->observacion)
                 );
                 array_push($token, $token2);
             }
@@ -1042,8 +1042,8 @@ class JwtAuth{
                 $conta28=Conta28::select('detalle','codcen')->where('coddep','=',$c24->coddep)->where('cnt','=','01')->first();
                 $token2 = array(
                     'codact'=>$c24->codact,
-                    'detalle'=>$conta19->detalle,
-                    'dependencia'=>$conta28->detalle,
+                    'detalle'=>utf8_decode($conta19->detalle),
+                    'dependencia'=>utf8_decode($conta28->detalle),
                     'fecha'=>$conta19->fecsis,
                     'estado'=>$c24->estinv
                 );
@@ -1093,8 +1093,8 @@ class JwtAuth{
                     $conta28=Conta28::select('detalle','codcen')->where('coddep','=',$c24->coddep)->first();
                     $token2 = array(
                         'codact'=>$c24->codact,
-                        'detalle'=>$conta19->detalle,
-                        'dependencia'=>$conta28->detalle,
+                        'detalle'=>utf8_decode($conta19->detalle),
+                        'dependencia'=>utf8_decode($conta28->detalle),
                         'fecha'=>$conta19->fecsis,
                         'estado'=>$c24->estinv,
                         'estado_fisico'=>$c24->estact
