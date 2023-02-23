@@ -43,26 +43,21 @@ class TrasladoController extends Controller
                 $codare=$codcen[0].$codcen[1];
 
                 $conta19 = Conta19::where('codact','=',$params_array['codact'])
-                ->where('cnt','01')->update(['codare'=>$codare]);
+                ->where('cnt','01')->update(['codare'=>$codare, 'coddep'=>$params_array['coddep'],'cedtra'=>$params_array['cedtra'], 'codcen'=>$codcenR, 'codubi'=>$params_array['codubi']]);
 
-                $conta19 = Conta19::where('codact','=',$params_array['codact'])
-                ->where('cnt','01')->update(['coddep'=>$params_array['coddep']]);
-
-
-                $conta19 = Conta19::where('codact','=',$params_array['codact'])
-                ->where('cnt','01')->update(['cedtra'=>$params_array['cedtra']]);
-
-                $conta19 = Conta19::where('codact','=',$params_array['codact'])
-                ->where('cnt','01')->update(['codcen'=>$codcenR]);
-
-                $conta19 = Conta19::where('codact','=',$params_array['codact'])
-                ->where('cnt','01')->update(['codubi'=>$params_array['codubi']]);
-
-                $data = array(
-                    'status' => 'success',
-                    'code'   => 200,
-                    'message' => 'si creado',
-                );
+                if($conta19){
+                    $data = array(
+                        'status' => 'success',
+                        'code'   => 200,
+                        'message' => 'si creado',
+                    );                    
+                }else{
+                    $data = array(
+                        'status' => 'error',
+                        'code'   => 404,
+                        'message' => 'no se puede updateConta19'      
+                    );
+                }
             }
         }else{
             $data = array(
